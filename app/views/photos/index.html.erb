@@ -1,0 +1,32 @@
+<div class="my-4 mx-2">
+
+  <div class="page-header">
+    <h1>All Images</h1>
+  </div>
+
+  <div class="my-3 mx-2">
+    <div class="row">
+
+      <% @photos.each do |photo| %>
+        <!-- condition for finding photo of current user -->
+        <% if current_user.id == photo.user_id %>
+          <div class="col-md-2">
+            <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
+
+              <!-- Rendering image -->
+              <li class="nav-item">
+                <%= link_to image_tag(photo.image.url(:medium), class: 'media-object'), photo.image.url, target: '_blank' %>
+              </li>
+
+              <!-- Button to delete image -->
+              <li class="nav-item">
+                <%= link_to 'Remove', photo_path(photo), class: 'btn btn-light btn-sm', method: :delete, data: {confirm: 'Are you sure?'} %>
+              </li>
+
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

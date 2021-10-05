@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GalleryNew</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <li class="nav-item">
+              <%= link_to "Home", root_path, :class => 'nav-link active fs-5' %>
+            </li>
+
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Gallery", photos_path, :class => 'nav-link fs-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Upload Image", new_photo_path, :class => 'nav-link fs-5' %>
+              </li>
+              </ul>
+              <form class="d-flex">
+                <li><%= link_to "Log out", '/users/sign_out', :class => 'btn btn-primary btn-group-sm bg-dark border border-secondary fs-5 ', :method => :delete %></li>
+              </form>
+
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Gallery", photos_path, :class => 'nav-link disabled fs-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Upload Image", new_photo_path, :class => 'nav-link disabled fs-5' %>
+              </li>
+              </ul>
+              <form class="d-flex">
+                <li><%= link_to "Log in", new_user_session_path, :class => 'btn btn-primary btn-group-sm bg-dark border border-secondary fs-5' %></li>
+                <li><%= link_to "Sign up", new_user_registration_path , :class => 'btn btn-primary btn-group-sm bg-dark border border-secondary fs-5' %></li>
+              </form>
+            <% end %>
+          
+        </div>
+      </div>
+    </nav>
+  
+    <!-- displaying flash messages -->
+    <% flash.each do |key, value| %>
+
+      <% if key=alert %>
+        <div class="alert alert-danger">
+          <%= value %>
+        </div>
+      <% else %>
+      <div class="alert alert-success">
+          <%= value %>
+        </div>
+      <% end %>
+
+    <% end %>
+
+    <!-- displaying content of different pages -->
+    <div>
+      <%= yield %>
+    </div>
+
+  </body>
+</html>
