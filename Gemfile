@@ -28,6 +28,9 @@ gem 'devise'
 #using kt-paperclip gem for image processing
 gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
 
+# use active-admin gem
+gem 'activeadmin'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
