@@ -65,4 +65,7 @@ Rails.application.configure do
 
   #let paperclip know to look there
   Paperclip.options[:command_path] = "/usr/bin/"
+
+  # Allow generating absolute urls with routing url helpers.
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end
