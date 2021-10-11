@@ -13,7 +13,6 @@ RSpec.describe "Registrations", type: :system do
     fill_in "user_email", with: email
     fill_in "user_password", with: password
     click_button "Sign up"
-
     expect(page).to have_current_path '/users'
   end
 end
