@@ -28,6 +28,13 @@ class PhotosController < ApplicationController
             flash[:alert] = "Error deleting photo!"
         end
     end
+
+    def show
+        @photo = Photo.find(params[:id])
+
+        @prev_photo = @photo.prev
+        @next_photo = @photo.next
+    end
   
     private
   

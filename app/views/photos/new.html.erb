@@ -10,7 +10,7 @@
                 <%= f.number_field :user_id, id: :photo_user_id, class: 'form-control', value: current_user.id, type: :hidden %>
             </div>
             
-            <div class="input-group mb-3"">
+            <div class="input-group mb-3">
                 <%= f.file_field :image, class: 'form-control' %>
                 <%= f.submit 'Upload Photo', class: 'input-group-text' %>
             </div>
