@@ -4,14 +4,12 @@
     <title>GalleryNew</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-  <!-- navbar -->
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1a1818">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -46,14 +44,12 @@
                 <li><%= link_to "Sign up", new_user_registration_path , :class => 'btn btn-primary btn-group-sm border border-secondary fs-5' , :style => 'background-color: #1a1818'%></li>
               </form>
             <% end %>
-          
         </div>
       </div>
     </nav>
   
     <!-- displaying flash messages -->
     <% flash.each do |key, value| %>
-
       <% if key=alert %>
         <div class="alert alert-danger alert-dismissible mb-0">
           <button type = "button" class="close" data-dismiss = "alert">x</button>
@@ -65,7 +61,6 @@
           <%= value %>
         </div>
       <% end %>
-
     <% end %>
 
     <!-- displaying content of different pages -->

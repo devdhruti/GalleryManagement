@@ -1,12 +1,10 @@
 <div class='container my-5'>
   <!-- div for signup box -->
   <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 mx-auto form p-4 bg-light border border-1 rounded-3">
-
     <h1 class="text-center" style="font-family: 'Lato', sans-serif;">Sign Up</h1>
 
     <!-- div for form fields -->
     <div class=" mt-2 py-3 px-4">
-
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <!-- rendering error messages -->
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -32,9 +30,7 @@
         <div class="actions my-3">
           <%= f.submit "Sign up",class: "btn btn-primary" %>
         </div>
-
       <% end %>
-
       <!-- rendering links for login and didn't receive confimation instruction -->
       <%= render "devise/shared/links" %>
     </div>

@@ -1,16 +1,10 @@
 <div class="card bg-dark text-dark">
-
 	<!-- background image -->
 	<%= image_tag("2.jpg", class: 'img-background')%>
-
 	<div class="card-img-overlay">
-
 		<div class="card text-center my-5 mx-5 py-3 bg-light">
-
 			<div class="card-body">
-
 				<h1 class="card-title" style="font-family: 'Lato', sans-serif;">Welcome!</h1>
-
 				<!-- execute if block when user is signed in -->
 				<% if user_signed_in? %>
 					<p class="card-text">
@@ -26,7 +20,6 @@
 						<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 					</p>
 				<% end %>
-
 			</div>
 		</div>
 	</div>
