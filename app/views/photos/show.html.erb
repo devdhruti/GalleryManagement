@@ -5,7 +5,7 @@
     </div>
     <div class="my-2">
       <%= link_to image_tag("prev.png", class: 'img-fluid'), @prev_photo if !@prev_photo.nil? %>
-      <img src="<%=@photo.image.url(:large) %>" class="img-fluid rounded">
+      <img src="<%=@photo.image.url(:large) %>" class="img-fluid rounded" style="width:55%; height:500px">
       <%= link_to image_tag("next.png", class: 'img-fluid'), @next_photo if !@next_photo.nil? %>
     </div>
   </div>
