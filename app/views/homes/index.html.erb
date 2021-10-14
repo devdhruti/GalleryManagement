@@ -1,26 +1,26 @@
 <div class="card bg-dark text-dark">
-	<!-- background image -->
-	<%= image_tag("2.jpg", class: 'img-background')%>
-	<div class="card-img-overlay">
-		<div class="card text-center my-5 mx-5 py-3 bg-light">
-			<div class="card-body">
-				<h1 class="card-title" style="font-family: 'Lato', sans-serif;">Welcome!</h1>
-				<!-- execute if block when user is signed in -->
-				<% if user_signed_in? %>
-					<p class="card-text">
-						Logged in as <strong><%= current_user.email %></strong>.
-						<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-						<%= link_to 'Sign out', '/users/sign_out', :method => :delete %>
-					</p>
-				<!-- execute else block when user is signed out -->    
-				<% else %>
-					<p class="card-text">
-						<p>Register to get started.</p>
-						<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-						<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-					</p>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  <!-- background image -->
+  <%= image_tag("2.jpg", class: 'img-background')%>
+  <div class="card-img-overlay">
+    <div class="card text-center my-5 mx-5 py-3 bg-light">
+      <div class="card-body">
+        <h1 class="card-title" style="font-family: 'Lato', sans-serif;">Welcome!</h1>
+        <!-- execute if block when user is signed in -->
+        <% if user_signed_in? %>
+          <p class="card-text">
+            Logged in as <strong><%= current_user.email %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <%= link_to 'Sign out', '/users/sign_out', :method => :delete %>
+          </p>
+        <!-- execute else block when user is signed out -->    
+        <% else %>
+          <p class="card-text">
+            <p>Register to get started.</p>
+            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
