@@ -1,6 +1,6 @@
 <div class="my-4 mx-2">
 
-  <div class="page-header">
+  <div class="page-header border-secondary pl-2" style="border-left:4px solid; border-bottom:1px solid">
     <h1>All Images</h1>
   </div>
 
@@ -10,18 +10,18 @@
       <% @photos.each do |photo| %>
         <!-- condition for finding photo of current user -->
         <% if current_user.id == photo.user_id %>
-          <div class="col-md-2">
+          <div class="col-md-2 px-0">
             <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
 
               <!-- Rendering image -->
               <li class="nav-item">
                 <a href="<%= photo_path(photo) %>" class="media-object">
-                	<img src="<%=photo.image.url(:medium) %>" class="media-object">
+                	<img src="<%=photo.image.url %>" class="img-responsive">
                 </a>
               </li>
 
               <!-- Button to delete image -->
-              <li class="nav-item">
+              <li class="nav-item text-center">
                 <%= link_to 'Remove', photo_path(photo), class: 'btn btn-light btn-sm', method: :delete, data: {confirm: 'Are you sure?'} %>
               </li>
 
