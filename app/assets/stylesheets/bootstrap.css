@@ -2759,6 +2759,8 @@ textarea.form-control-lg {
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  background-color: #e9ecef;
+  border-color: #ced4da;
 }
 
 .valid-feedback {

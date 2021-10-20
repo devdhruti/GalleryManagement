@@ -1,0 +1,23 @@
+<div class="my-3 mx-3">
+  <div class="page-header border-secondary pl-2" style="border-left:4px solid; border-bottom:1px solid">
+    <h1><%= @album.name %></h1>
+  </div>
+  <div class="row my-1">
+    <% @album.photos.each do |album_photo| %>
+      <div class="col-md-2 px-1">
+        <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
+          <!-- Rendering image -->
+          <li class="nav-item">
+            <img src = "<%= album_photo.image.url %>", class="img-responsive">
+          </li>
+          <li class="nav-item text-center">
+            <%= link_to 'Remove', photo_path(album_photo), class: 'btn btn-light btn-sm', method: :delete, data: {confirm: 'Are you sure?'} %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    <li class="nav-item mx-3 my-3" style="list-style:none">
+      <%= link_to 'Back', albums_path , class: 'navbar-link' %>
+    </li>
+  </div>
+</div>
