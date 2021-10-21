@@ -1,0 +1,22 @@
+<div class="my-5 mx-4">
+  <%= form_for @album, html: { multipart: true } do |f| %>
+
+    <!-- hidden field of curent user id -->
+    <div class="form-group">
+      <%= f.number_field :user_id, id: :album_user_id, class: 'form-control', value: current_user.id, type: :hidden %>
+    </div>
+
+    <div class="form-group" style="width:30%">
+      <h5>Album name : </h5>
+      <%= f.text_field :name, class: 'form-control'%>
+      <%= render "users/shared/error_messages", resource: @album %>
+    </div>
+     
+    
+    <div class="input-group mb-3">
+      <%= f.submit 'Create Album', class: 'input-group-text' %>
+    </div>
+
+ 
+  <% end %>
+</div>

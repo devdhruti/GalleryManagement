@@ -9,7 +9,7 @@
       <% @photos.each do |photo| %>
         <!-- condition for finding photo of current user -->
         <% if current_user.id == photo.user_id %>
-          <div class="col-md-2 px-0">
+          <div class="col-md-2 px-1">
             <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
               <!-- Rendering image -->
               <li class="nav-item">

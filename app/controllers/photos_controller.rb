@@ -5,16 +5,16 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    @albums = current_user.albums
   end
 
   def create
     @photo = Photo.new(photo_params)
-    if @photo.save
+    if @photo.save 
       flash[:notice] = "Successfully added new photo!"
       redirect_to photos_path
     else
-      flash[:alert] = "Error adding new photo!"
-      render :new
+      redirect_to new_photo_path, alert: @photo.errors.full_messages.first
     end
   end
 
@@ -29,14 +29,14 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
-    @prev_photo = @photo.prev
-    @next_photo = @photo.next
+    @photos = current_user.photos
+    @photo = @photos.find(params[:id])
+    @prev_photo = @photo.prev(@photos,@photo)
+    @next_photo = @photo.next(@photos,@photo)
   end
 
   private
-
   def photo_params
-    params.require(:photo).permit(:title, :image, :user_id)
+    params.require(:photo).permit(:title, :image, :user_id, :album_id)
   end
 end

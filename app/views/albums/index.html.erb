@@ -1,0 +1,49 @@
+<div class="mx-4 my-4">
+  <div class="page-header border-secondary pl-2" style="border-left:4px solid; border-bottom:1px solid">
+    <h1>All Albums</h1>
+  </div>
+  <div>
+    <div class="row my-3">
+      <% @albums.each do |album| %>
+        <!-- condition for finding photo of current user -->
+        <% if current_user.id == album.user_id %>
+          <div class="col-md-2">
+            <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
+              <!-- Rendering image -->
+              <%if album.photos.any?%>
+                <li class="nav-item">
+                  <a href="<%= album_path(album) %>" class="media-object">
+                    <img src="<%= album.photos.first.image.url%>" class="img-responsive" style="border-radius:20px">
+                  </a>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to image_tag("Gallery.png", class: 'img-responsive'), album_path(album) %>
+                </li>
+              <% end %>
+              <li class="nav-item text-center">
+                <%= album.name %>
+              </li>
+              <!-- Button to delete image -->
+              <li class="nav-item text-center">
+                <%= link_to 'Delete', album_path(album), class: 'btn btn-light btn-sm', method: :delete, data: {confirm: 'Are you sure?'} %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-2 mt-2">
+    <div class="row border border-secondary"  style="width:160px; height:160px; border-radius:20px;">
+      <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
+        <li class="nav-item", style ="list-style: none; " >
+          <%= link_to image_tag("add.png", class: 'img-responsive my-5 mx-5', style: 'height:50px; width:50px'), new_album_path%>
+        </li>
+        <li class="text-center mt-2">
+          <h6>New Album</h6>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

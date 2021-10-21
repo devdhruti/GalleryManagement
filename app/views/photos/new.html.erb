@@ -1,35 +1,29 @@
 <div class="my-3 mx-5">
-    <div class="page-header my-3"><h1>Upload Photo</h1></div>
+  <div class="page-header my-3  border-secondary pl-2" style="border-left:4px solid; border-bottom:1px solid">
+    <h1>Upload Photo</h1>
+  </div>
 
-    <div class="my-3">
+  <div class="my-4">
+    <%= form_for @photo, html: { multipart: true } do |f| %>
+      <!-- hidden field of curent user id -->
+      <div class="form-group">
+        <%= f.number_field :user_id, id: :photo_user_id, class: 'form-control', value: current_user.id, type: :hidden %>
+      </div>
+      
+      <div class=" input-group mb-3 my-3">
+        <h5 class="mr-2">Album :</h5>
+        <% albums_array = @albums.map { |album| [album.name, album.id] } %>
+        <%= f.select :album_id, albums_array, :include_blank => "Choose Album" %>
+      </div>
 
-        <%= form_for @photo, html: { multipart: true } do |f| %>
+      <div class="input-group mb-3">
+        <h5 class="mr-2">Photo :</h5>
+        <%= f.file_field :image, class: 'form-control' %>
+        <%= f.submit 'Upload Photo', class: 'input-group-text' %>
+      </div>
 
-            <!-- hidden field of curent user id -->
-            <div class="form-group">
-                <%= f.number_field :user_id, id: :photo_user_id, class: 'form-control', value: current_user.id, type: :hidden %>
-            </div>
-            
-            <div class="input-group mb-3">
-                <%= f.file_field :image, class: 'form-control' %>
-                <%= f.submit 'Upload Photo', class: 'input-group-text' %>
-            </div>
-
-            <!-- rendering error messages for empty photo field or invalid photo -->
-            <%= render "users/shared/error_messages", resource: @photo %>
-            
-        <% end %>
-    </div>
+      <!-- rendering error messages for empty photo field or invalid photo -->
+      <%= render "users/shared/error_messages", resource: @photo %>
+    <% end %>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-    
-    

@@ -21,10 +21,13 @@
 
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "Gallery", photos_path, :class => 'nav-link fs-5 pr-3' %>
+                <%= link_to "Gallery", photos_path, :class => 'nav-link fs-5 pr-3'%>
               </li>
               <li class="nav-item">
-                <%= link_to "Upload Photo", new_photo_path, :class => 'nav-link fs-5 pr-3' %>
+                <%= link_to "Albums", albums_path, :class => 'nav-link fs-5 pr-3'%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Upload Photo", new_photo_path, :class => 'nav-link fs-5 pr-3'%>
               </li>
               </ul>
               <form class="d-flex">
@@ -36,8 +39,11 @@
                 <%= link_to "Gallery", photos_path, :class => 'nav-link disabled fs-5 pr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to "Upload Photo", new_photo_path, :class => 'nav-link disabled fs-5 pr-3' %>
+                <%= link_to "Albums", albums_path, :class => 'nav-link disabled fs-5 pr-3' %>
               </li>
+              <li class="nav-item">
+                <%= link_to "Upload Photo", new_photo_path, :class => 'nav-link disabled fs-5 pr-3' %>
+              </li> 
               </ul>
               <form class="d-flex">
                 <li><%= link_to "Log in", new_user_session_path, :class => 'btn btn-primary btn-group-sm border border-secondary fs-5' , :style => 'background-color: #1a1818'%></li>
