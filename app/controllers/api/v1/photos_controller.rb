@@ -16,8 +16,8 @@ class Api::V1::PhotosController < Api::V1::AuthenticatedController
     authorize_user!
     
     begin
-      photo = Photo.create!(photo_params)
-
+      verify!(photo_params[:album_id].to_i)
+      photo = Photo.create!(photo_params.merge(user_id: current_user.id))
     rescue => e
       render_exception(e, 422) && return
     end
@@ -30,6 +30,7 @@ class Api::V1::PhotosController < Api::V1::AuthenticatedController
 
     begin
       @photo = Photo.find(params[:id])
+      validate!(@photo.user_id)
       @photo.destroy
 
     rescue => e
@@ -44,6 +45,7 @@ class Api::V1::PhotosController < Api::V1::AuthenticatedController
 
     begin
       @photo = Photo.find(params[:id])
+      validate!(@photo.user_id)
 
     rescue => e
       render_exception(e, 422) && return
@@ -53,6 +55,6 @@ class Api::V1::PhotosController < Api::V1::AuthenticatedController
   
   private
   def photo_params
-    params.require(:photo).permit(:image, :user_id, :album_id)
+    params.require(:photo).permit(:image, :album_id)
   end
 end

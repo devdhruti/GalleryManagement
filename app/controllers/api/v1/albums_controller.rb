@@ -18,7 +18,7 @@ class Api::V1::AlbumsController < Api::V1::AuthenticatedController
     authorize_user!
     
     begin
-      album = Album.create!(album_params)
+      album = Album.create!(album_params.merge(user_id: current_user.id))
 
     rescue => e
       render_exception(e, 422) && return
@@ -32,6 +32,7 @@ class Api::V1::AlbumsController < Api::V1::AuthenticatedController
 
     begin
       @album = Album.find(params[:id])
+      validate!(@album.user_id)
       @album.destroy
 
     rescue => e
@@ -46,6 +47,7 @@ class Api::V1::AlbumsController < Api::V1::AuthenticatedController
 
     begin
       @album = Album.find(params[:id])
+      validate!(@album.user_id)
 
     rescue => e
       render_exception(e, 422) && return
@@ -55,6 +57,6 @@ class Api::V1::AlbumsController < Api::V1::AuthenticatedController
 
   private
   def album_params
-    params.require(:album).permit(:name, :user_id)
+    params.require(:album).permit(:name)
   end
 end

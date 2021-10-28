@@ -30,6 +30,7 @@ class UserGenerator
     raise ConfirmationError, 'Your email address is not confirmed' unless user.confirmed?
     
     user_token = UserToken.find_or_initialize_by(user_id: user.id)
+    raise DuplicateError, 'User already signed in' if !user_token.token.blank?
     user_token.token = generate_token
 
     user.save!
