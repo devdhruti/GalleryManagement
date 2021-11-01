@@ -22,6 +22,8 @@ Rails.application.routes.draw do
         post "/confirm_email", to: "confirmations#confirm_email"
       end
 
+      resources :quotes 
+
       # routing error path
       match '*path', to: 'base#routing_error', via: %i[get post put patch delete]
       root to: 'base#routing_error'

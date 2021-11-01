@@ -10,7 +10,7 @@ class Api::V1::SessionsController < Api::V1::AuthenticatedController
     rescue UserGenerator::ParameterNotFound, UserGenerator::DuplicateError,  UserGenerator::ConfirmationError, UserGenerator::InvalidCredentials => e
       render_exception(e, 422) && return
     end
-    json_response(UserSerializer.new(
+    json_response(UserSessionSerializer.new(
       ug.user,
       { params: 
         { 
