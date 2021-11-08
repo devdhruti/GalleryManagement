@@ -10,7 +10,7 @@ class Api::V1::RegistrationsController < Api::V1::AuthenticatedController
     rescue UserGenerator::ParameterNotFound, UserGenerator::DuplicateError => e
       render_exception(e, 422) && return
     end
-    json_response(UserSerializer.new(ug.user).serializable_hash[:data][:attributes]) 
+    json_response(UserRegistrationSerializer.new(ug.user).serializable_hash[:data][:attributes]) 
   end
   
   private
