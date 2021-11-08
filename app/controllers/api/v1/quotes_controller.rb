@@ -6,6 +6,7 @@ class Api::V1::QuotesController < Api::V1::AuthenticatedController
 
     begin
       @quotes = current_user.quotes.order('created_at')
+      @quotes = @quotes.search(quotes_params[:query]) if params[:quote][:query].present?
     rescue => e
       render_exception(e, 422) && return
     end
@@ -56,6 +57,6 @@ class Api::V1::QuotesController < Api::V1::AuthenticatedController
 
   private
   def quotes_params
-    params.require(:quote).permit(:quotes)
+    params.require(:quote).permit(:quotes, :query)
   end
 end
