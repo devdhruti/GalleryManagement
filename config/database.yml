@@ -16,4 +16,9 @@ test:
   password: password
 
 production:
-  url: <%= ENV['DATABASE_URL'] %> 
+  adapter: postgresql
+  encoding: unicode
+  database: gallery_production
+  pool: 5
+  username: postgres
+  password: password 
