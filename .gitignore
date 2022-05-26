@@ -1,3 +1,13 @@
-Gemfile.lock
 db/schema.rb
 log/development.log
+node_modules
+public
+db/test.sqlite3
+db/test.sqlite3-0
+db/test.sqlite3-1
+db/test.sqlite3-2
+db/test.sqlite3-3
+log
+tmp/screenshots
+tmp/cache
+tmp/pids
