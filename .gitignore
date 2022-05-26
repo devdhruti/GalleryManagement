@@ -2,8 +2,9 @@ Gemfile.lock
 db/schema.rb
 log/development.log
 node_modules
-tmp/cache
+tmp/cache/assets
+tmp/cache/webpacker
 public/packs/js
+public/packs-test/js
 public/system/photos
 tmp/screenshots
-tmp/pids
